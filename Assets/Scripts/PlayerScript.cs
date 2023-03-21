@@ -46,7 +46,18 @@ public class PlayerScript : MonoBehaviour
         if(scoreValue == 4)   
         {
             win.text = "You Win! Game Created by Riley Whitfield <" + winValue.ToString();
-        }  
+        }
+
+        if(collision.collider.tag == "Enemy")
+        {
+            livesValue = livesValue -1;
+            lives.text = "Lives: " + livesValue.ToString();
+        }
+
+        if(livesValue == 0)
+        {
+            win.text = "You Lose </" + winValue.ToString();
+        }
     }
 
 
