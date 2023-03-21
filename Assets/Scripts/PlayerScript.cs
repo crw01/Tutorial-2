@@ -9,13 +9,19 @@ public class PlayerScript : MonoBehaviour
     private Rigidbody2D rd2d;
     public float speed;
     public Text score;
+    public Text lives;
+    public Text win;
     private int scoreValue = 0;
+    private int livesValue = 3;
+    private int winValue = 3;
 
 
     void Start()
     {
         rd2d = GetComponent<Rigidbody2D>();
-        score.text = scoreValue.ToString();
+        score.text = "Score: " + scoreValue.ToString();
+        lives.text = "Lives: " + livesValue.ToString();
+        win.text = " ";
     }
 
     // FixedUpdate is update but with anything having to do with physics
@@ -26,7 +32,6 @@ public class PlayerScript : MonoBehaviour
         float verMovement = Input.GetAxis("Vertical");
    
         rd2d.AddForce(new Vector2(hozMovement * speed, verMovement * speed));
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -35,9 +40,15 @@ public class PlayerScript : MonoBehaviour
         {
             Destroy(collision.collider.gameObject);
             scoreValue += 1;
-            score.text = scoreValue.ToString();
+            score.text = "Score: " + scoreValue.ToString();
         }
+ 
+        if(scoreValue == 4)   
+        {
+            win.text = "You Win! Game Created by Riley Whitfield <" + winValue.ToString();
+        }  
     }
+
 
     private void OnCollisionStay2D(Collision2D collision)
     {
