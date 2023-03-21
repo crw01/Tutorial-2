@@ -43,7 +43,7 @@ public class PlayerScript : MonoBehaviour
             score.text = "Score: " + scoreValue.ToString();
         }
  
-        if(scoreValue == 4)   
+        if(scoreValue == 9)   
         {
             win.text = "You Win! Game Created by Riley Whitfield <" + winValue.ToString();
         }
@@ -57,6 +57,13 @@ public class PlayerScript : MonoBehaviour
         if(livesValue == 0)
         {
             win.text = "You Lose </" + winValue.ToString();
+        }
+  
+        if(scoreValue == 4)
+        {
+            transform.position = new Vector3(30.0f, 0.0f, 0.0f);
+            livesValue = 3;
+            lives.text = "Lives: " + livesValue.ToString();
         }
     }
 
@@ -72,4 +79,4 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-}
+} 
