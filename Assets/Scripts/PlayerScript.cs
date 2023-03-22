@@ -21,6 +21,8 @@ public class PlayerScript : MonoBehaviour
     public AudioClip loserMusic;
     public AudioClip winnerMusic;
 
+    Animator anim;
+
 
     void Start()
     {
@@ -31,6 +33,9 @@ public class PlayerScript : MonoBehaviour
 
         musicSource.clip = backgroundMusic;
         musicSource.Play();
+
+        anim = GetComponent<Animator>();
+
     }
 
     // FixedUpdate is update but with anything having to do with physics
@@ -42,6 +47,7 @@ public class PlayerScript : MonoBehaviour
    
         rd2d.AddForce(new Vector2(hozMovement * speed, verMovement * speed));
     }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
