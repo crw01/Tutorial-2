@@ -21,9 +21,6 @@ public class PlayerScript : MonoBehaviour
     public AudioClip loserMusic;
     public AudioClip winnerMusic;
 
-    Animator anim;
-
-
     void Start()
     {
         rd2d = GetComponent<Rigidbody2D>();
@@ -33,8 +30,6 @@ public class PlayerScript : MonoBehaviour
 
         musicSource.clip = backgroundMusic;
         musicSource.Play();
-
-        anim = GetComponent<Animator>();
 
     }
 
@@ -99,5 +94,6 @@ public class PlayerScript : MonoBehaviour
             }
         }
     }
+
 
 } 
