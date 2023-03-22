@@ -15,6 +15,12 @@ public class PlayerScript : MonoBehaviour
     private int livesValue = 3;
     private int winValue = 3;
 
+    //audio shtuff
+    public AudioSource musicSource;
+    public AudioClip backgroundMusic;
+    public AudioClip loserMusic;
+    public AudioClip winnerMusic;
+
 
     void Start()
     {
@@ -22,6 +28,9 @@ public class PlayerScript : MonoBehaviour
         score.text = "Score: " + scoreValue.ToString();
         lives.text = "Lives: " + livesValue.ToString();
         win.text = " ";
+
+        musicSource.clip = backgroundMusic;
+        musicSource.Play();
     }
 
     // FixedUpdate is update but with anything having to do with physics
@@ -46,6 +55,8 @@ public class PlayerScript : MonoBehaviour
         if(scoreValue == 9)   
         {
             win.text = "You Win! Game Created by Riley Whitfield <" + winValue.ToString();
+            musicSource.clip = winnerMusic;
+            musicSource.Play();
         }
 
         if(collision.collider.tag == "Enemy")
@@ -57,6 +68,10 @@ public class PlayerScript : MonoBehaviour
         if(livesValue == 0)
         {
             win.text = "You Lose </" + winValue.ToString();
+            musicSource.clip = backgroundMusic;
+            musicSource.Stop();
+            musicSource.clip = loserMusic;
+            musicSource.Play();
         }
   
         if(scoreValue == 4)
